@@ -1,0 +1,136 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Note: SQLite doesn't support enums, so we use String with constraints
+// Role values: "ADMIN" | "USER"
+// AppointmentStatus values: "PENDING" | "CONFIRMED" | "CANCELLED" | "COMPLETED"
+// UserRoleInOrganization values: "OWNER" | "ADMIN" | "STAFF" | "CLIENT"
+
+model Organization {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique // URL-friendly identifier
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  members      OrganizationMember[]
+  services     Service[]
+  appointments Appointment[]
+  businessHours BusinessHours[]
+
+  @@map("organizations")
+}
+
+model OrganizationMember {
+  id             String   @id @default(uuid())
+  userId         String
+  organizationId String
+  role           String   @default("CLIENT") // "OWNER" | "ADMIN" | "STAFF" | "CLIENT"
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, organizationId])
+  @@index([userId])
+  @@index([organizationId])
+  @@map("organization_members")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  role      String   @default("USER") // "ADMIN" | "USER" (global role)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  appointments        Appointment[]
+  refreshTokens       RefreshToken[]
+  organizationMembers OrganizationMember[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+model Service {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  description    String?
+  duration       Int      // Duration in minutes
+  price          Float?
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  appointments  Appointment[]
+
+  @@index([organizationId])
+  @@map("services")
+}
+
+model BusinessHours {
+  id             String   @id @default(uuid())
+  organizationId String
+  dayOfWeek      Int      // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+  openTime       String   // Format: "HH:mm"
+  closeTime      String   // Format: "HH:mm"
+  isOpen         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, dayOfWeek])
+  @@index([organizationId])
+  @@map("business_hours")
+}
+
+model Appointment {
+  id             String   @id @default(uuid())
+  organizationId String
+  userId         String
+  serviceId      String
+  startTime      DateTime
+  endTime        DateTime
+  status         String   @default("PENDING") // "PENDING" | "CONFIRMED" | "CANCELLED" | "COMPLETED"
+  notes          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  service       Service      @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@index([startTime])
+  @@index([userId])
+  @@index([serviceId])
+  @@index([organizationId])
+  @@map("appointments")
+}

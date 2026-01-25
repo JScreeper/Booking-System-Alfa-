@@ -1,0 +1,236 @@
+.container {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  color: var(--foreground);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters {
+  flex: 1;
+  min-width: 250px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+  background: var(--card);
+  color: var(--foreground);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.addButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.addButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.formContainer {
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.serviceCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.2s;
+  color: var(--foreground);
+}
+
+.serviceCard:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.serviceCard.inactive {
+  opacity: 0.7;
+  background: var(--secondary);
+}
+
+.serviceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.serviceName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+  flex: 1;
+}
+
+.statusBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusBadge.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.statusBadge.inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.serviceDescription {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.serviceDetails {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.detail {
+  font-size: 0.875rem;
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.serviceActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+}
+
+.actionButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.actionButton.edit {
+  color: #667eea;
+  border-color: #667eea;
+}
+
+.actionButton.edit:hover {
+  background: #667eea;
+  color: white;
+}
+
+.actionButton.delete {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.actionButton.delete:hover {
+  background: #ef4444;
+  color: white;
+}
+
+.actionButton.activate {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.actionButton.activate:hover {
+  background: #10b981;
+  color: white;
+}
+
+.actionButton.deactivate {
+  color: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.actionButton.deactivate:hover {
+  background: #f59e0b;
+  color: white;
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.empty p {
+  font-size: 1.125rem;
+  color: #64748b;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .addButton {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceActions {
+    flex-direction: column;
+  }
+
+  .actionButton {
+    width: 100%;
+  }
+}

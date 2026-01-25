@@ -1,0 +1,24 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.loading,
+.error,
+.empty {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.125rem;
+  color: #6b7280;
+}
+
+.error {
+  color: #dc2626;
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

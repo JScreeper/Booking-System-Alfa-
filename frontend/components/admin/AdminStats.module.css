@@ -1,0 +1,82 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  color: var(--foreground);
+}
+
+.statCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.revenueCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.revenueCard .statLabel,
+.revenueCard .statValue {
+  color: white;
+}
+
+.statIcon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.statContent {
+  flex: 1;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statValue {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+
+.error {
+  color: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

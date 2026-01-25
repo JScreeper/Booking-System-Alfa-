@@ -1,0 +1,170 @@
+.container {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  color: var(--foreground);
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+  background: var(--card);
+  color: var(--foreground);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.filterSelect {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: var(--card);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.userCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.2s;
+  color: var(--foreground);
+}
+
+.userCard:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 0.25rem 0;
+}
+
+.userEmail {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0 0 0.25rem 0;
+}
+
+.userDate {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.userActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.roleSelect {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: var(--card);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.roleSelect:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--card);
+  border-radius: 12px;
+  color: var(--foreground);
+}
+
+.empty p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.emptySubtext {
+  font-size: 0.875rem !important;
+  margin-top: 0.5rem !important;
+  color: var(--text-muted) !important;
+}
+
+@media (max-width: 768px) {
+  .userCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .userActions {
+    width: 100%;
+  }
+
+  .roleSelect {
+    width: 100%;
+  }
+}

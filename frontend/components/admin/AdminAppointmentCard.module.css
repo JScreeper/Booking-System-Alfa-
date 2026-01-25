@@ -1,0 +1,133 @@
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  color: var(--foreground);
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.serviceName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 0.5rem 0;
+}
+
+.userName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin: 0 0 0.25rem 0;
+}
+
+.userEmail {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.actionButton {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.confirmButton {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.confirmButton:hover:not(:disabled) {
+  background: #a7f3d0;
+}
+
+.cancelButton {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background: #fecaca;
+}
+
+.completeButton {
+  background: #e0e7ff;
+  color: #6366f1;
+}
+
+.completeButton:hover:not(:disabled) {
+  background: #c7d2fe;
+}
