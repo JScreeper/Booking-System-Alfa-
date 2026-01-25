@@ -1,0 +1,250 @@
+.calendar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  color: var(--foreground);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.navButton {
+  background: var(--secondary);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground);
+}
+
+.navButton:hover {
+  background: var(--border);
+}
+
+.monthYear {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.todayButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: opacity 0.2s;
+}
+
+.todayButton:hover {
+  opacity: 0.9;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.weekday {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  padding: 0.5rem;
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.day {
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  background: var(--card);
+  color: var(--foreground);
+}
+
+.day:hover {
+  background: var(--secondary);
+  border-color: var(--primary);
+}
+
+.day.today {
+  background: var(--secondary);
+  border-color: var(--primary);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.day.selected {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+.day.selected .dayNumber {
+  color: white;
+}
+
+.emptyDay {
+  aspect-ratio: 1;
+}
+
+.dayNumber {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.appointmentIndicator {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.appointmentCount {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: white;
+}
+
+.selectedDateInfo {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.selectedDateInfo h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.appointmentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.appointmentItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.time {
+  font-weight: 600;
+  color: var(--primary);
+  min-width: 80px;
+}
+
+.serviceName {
+  flex: 1;
+  color: var(--foreground);
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status.confirmed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status.completed {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+/* Dark mode status badges */
+:global(.dark) .status.pending {
+  background: #78350f;
+  color: #fbbf24;
+}
+
+:global(.dark) .status.confirmed {
+  background: #064e3b;
+  color: #34d399;
+}
+
+:global(.dark) .status.cancelled {
+  background: #7f1d1d;
+  color: #f87171;
+}
+
+:global(.dark) .status.completed {
+  background: #312e81;
+  color: #a5b4fc;
+}
+
+.noAppointments {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .calendar {
+    padding: 1rem;
+  }
+
+  .monthYear {
+    font-size: 1.25rem;
+  }
+}

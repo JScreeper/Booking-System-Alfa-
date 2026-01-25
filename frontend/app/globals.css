@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fafc;
+  --foreground: #1e293b;
+  --primary: #667eea;
+  --primary-dark: #764ba2;
+  --secondary: #f1f5f9;
+  --accent: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --success: #10b981;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --text-muted: #64748b;
+}
+
+/* Dark mode variables */
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --primary: #818cf8;
+  --primary-dark: #a5b4fc;
+  --secondary: #1e293b;
+  --accent: #34d399;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --success: #34d399;
+  --border: #475569;
+  --card: #1e293b;
+  --text-muted: #cbd5e1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Dark mode global styles */
+.dark input,
+.dark select,
+.dark textarea {
+  background: var(--card);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+}
+
+/* Card styles for dark mode */
+.dark .card,
+.dark [class*="card"] {
+  background: var(--card) !important;
+  border-color: var(--border) !important;
+  color: var(--foreground) !important;
+}
+
+/* Text colors for dark mode - stronger contrast */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.dark p,
+.dark span,
+.dark div,
+.dark label {
+  color: var(--foreground);
+}
+
+/* Ensure all text is visible in dark mode */
+.dark * {
+  color: inherit;
+}
+
+/* Links in dark mode */
+.dark a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.dark a:hover {
+  color: var(--primary-dark);
+}
+
+/* Better contrast for muted text */
+.dark .text-muted,
+.dark [class*="muted"],
+.dark [class*="secondary"] {
+  color: var(--text-muted) !important;
+}
+
+/* Form labels and inputs */
+.dark label {
+  color: var(--foreground) !important;
+  font-weight: 500;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* Override hardcoded gray colors in dark mode */
+.dark [style*="color: #6b7280"],
+.dark [style*="color: #64748b"],
+.dark [style*="color: #94a3b8"] {
+  color: var(--text-muted) !important;
+}
+
+/* Ensure all text elements have good contrast */
+.dark p,
+.dark span,
+.dark div,
+.dark td,
+.dark th,
+.dark li {
+  color: var(--foreground);
+}
+
+/* Cards and containers should have better contrast */
+.dark [class*="card"],
+.dark [class*="Card"] {
+  background: var(--card) !important;
+  border-color: var(--border) !important;
+  color: var(--foreground) !important;
+}
+
+/* Tables */
+.dark table {
+  color: var(--foreground);
+}
+
+.dark th,
+.dark td {
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+/* Buttons and interactive elements */
+.dark button:not([class*="primary"]):not([class*="danger"]) {
+  color: var(--foreground);
+}
+
+/* Headings should be very visible */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* Force better contrast for all text in dark mode */
+.dark {
+  color-scheme: dark;
+}
+
+.dark * {
+  color: inherit;
+}
+
+/* Specific overrides for common patterns */
+.dark [class*="title"],
+.dark [class*="Title"] {
+  color: var(--foreground) !important;
+  font-weight: 600;
+}
+
+.dark [class*="subtitle"],
+.dark [class*="Subtitle"] {
+  color: var(--text-muted) !important;
+}
+
+/* Ensure inputs and selects are visible */
+.dark input,
+.dark select,
+.dark textarea {
+  background: var(--card) !important;
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+}
+
+/* Better visibility for disabled elements */
+.dark button:disabled,
+.dark input:disabled,
+.dark select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
